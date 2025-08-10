@@ -1,0 +1,41 @@
+﻿@model codefirstmvc.Models.Category
+
+@{
+    ViewData["Title"] = "Category Details";
+}
+
+<h2>@Model.CategoryName</h2>
+<p>@Model.Description</p>
+
+<h4>Products in this Category</h4>
+
+@if (Model.Products != null && Model.Products.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td>@product.Prodname</td>
+                    <td>@product.price.ToString("C")</td>
+                    <td>
+                        <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Proid" class="btn btn-info btn-sm">View</a>
+                        <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Proid" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Proid" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted">No products in this category yet.</p>
+}
