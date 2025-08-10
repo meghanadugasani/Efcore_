@@ -1,4 +1,4 @@
-﻿@model IEnumerable<codefirstmvc.Models.Category>
+@model IEnumerable<codefirstmvc.Models.Category>
 
 @{
     ViewData["Title"] = "Categories";
@@ -20,7 +20,6 @@
                         <tr>
                             <th>Product Name</th>
                             <th>Price</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,11 +28,6 @@
                             <tr>
                                 <td>@product.Prodname</td>
                                 <td>@product.price.ToString("C")</td>
-                                <td>
-                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Proid" class="btn btn-info btn-sm">View</a>
-                                    <a asp-controller="Products" asp-action="Edit" asp-route-id="@product.Proid" class="btn btn-warning btn-sm">Edit</a>
-                                    <a asp-controller="Products" asp-action="Delete" asp-route-id="@product.Proid" class="btn btn-danger btn-sm">Delete</a>
-                                </td>
                             </tr>
                         }
                     </tbody>
